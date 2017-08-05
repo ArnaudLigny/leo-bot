@@ -16,7 +16,7 @@ You need to set a environment variable:
 export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
-> You'll find `SLACK_BOT_TOKEN` at https://`XXXXX`.slack.com/apps/A0F7YS25R-bots.
+> You'll find `SLACK_BOT_TOKEN` at https://my.slack.com/apps/A0F7YS25R-bots.
 
 ### Slack channels
 
