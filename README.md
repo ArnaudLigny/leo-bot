@@ -20,9 +20,9 @@ export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
 
 ### Slack channels
 
-The bot daily messages are sent to:
-- on `#test-bot` channel on **debug** mode
-- on `#leo` channel on **production** mode
+The bot daily message is sent to:
+- `#test-bot` channel on **debug** mode
+- `#leo` channel on **production** mode
 
 ## Usage
 
@@ -30,11 +30,14 @@ The bot daily messages are sent to:
 # Served with hot reload (+ ESLint verification).
 npm run dev
 
+# Launches ESLint to check if code respects it's syntax.
+npm run eslint
+
 # Start server in production environment.
 npm run start
 
-# Launches ESLint to check if code respects it's syntax.
-npm run eslint
+# Run as a worker (ie on Heroku server)
+node ./src/index.js
 ```
 
 ### Supported commands
