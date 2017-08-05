@@ -1,6 +1,6 @@
 # leo-bot
 
-> A very simple bot based on [Botkit](https://github.com/howdyai/botkit) to inform you when it's time to get your child to school!
+> A very simple bot based on [Botkit](https://github.com/howdyai/botkit) to inform you when it's time to pick up your child at school!
 
 ## Installation
 
@@ -20,12 +20,14 @@ export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
 
 ### Slack channels
 
-The bot daily messages are sent to `#test-bot` on debug mode and on `#leo` on production mode.
+The bot daily messages are sent to:
+- on `#test-bot` channel on **debug** mode
+- on `#leo` channel on **production** mode
 
 ## Usage
 
 ```bash
-# Served with hot reload (also launches ESLint verification).
+# Served with hot reload (+ ESLint verification).
 npm run dev
 
 # Start server in production environment.
