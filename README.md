@@ -1,6 +1,6 @@
 # leo-bot
 
-> A very simple bot based on [Botkit](https://github.com/howdyai/botkit) to inform you when it's time to pick up your child at school!
+> A very simple bot based on [Botkit](https://github.com/howdyai/botkit) to notice you when it's time to pick up your child at school!
 
 ![Slack screen capture](./docs/leo-bot-slack-example.png)
 
@@ -12,7 +12,7 @@ npm install
 
 ### Slack token
 
-You need to set a environment variable:
+You need to set an environment variable:
 
 ```bash
 export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
