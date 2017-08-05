@@ -14,6 +14,7 @@ You need to set a environment variable:
 
 ```bash
 export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
+```
 
 > You'll find `SLACK_BOT_TOKEN` at https://`XXXXX`.slack.com/apps/A0F7YS25R-bots.
 
