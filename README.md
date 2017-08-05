@@ -30,14 +30,11 @@ The bot daily message is sent to:
 # Served with hot reload (+ ESLint verification).
 npm run dev
 
-# Launches ESLint to check if code respects it's syntax.
+# Run ESLint to check if code respects it's syntax.
 npm run eslint
 
 # Start server in production environment.
 npm run start
-
-# Run as a worker (ie on Heroku server)
-node ./src/index.js
 ```
 
 ### Supported commands
