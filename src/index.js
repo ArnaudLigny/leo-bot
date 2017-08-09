@@ -6,8 +6,8 @@
 const config = require('../config.json')[process.env.NODE_ENV || 'development']
 const schedule = require('node-schedule')
 const token = process.env.SLACK_BOT_TOKEN
-const message_reminder = 'Attention <!channel>, il est temps de s\'organiser pour récupérer Léo !'
-const message_help = 'Hello, je ne sers que de rappel journalier ! :smile:'
+const messageReminder = 'Attention <!channel>, il est temps de s\'organiser pour récupérer Léo !'
+const messageHelp = 'Hello, je ne sers que de rappel journalier ! :smile:'
 
 if (!token) {
   console.log('Error: Specify token in environment')
@@ -37,7 +37,7 @@ schedule.scheduleJob(config['SCHEDULE'], function () {
   bot.api.chat.postMessage({
     'token': token,
     'channel': config['CHANNEL'],
-    'text': message_reminder,
+    'text': messageReminder,
     'as_user': true
   })
 })
@@ -46,5 +46,5 @@ schedule.scheduleJob(config['SCHEDULE'], function () {
  * Explain the user how to use the bot
  */
 controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', function (bot, message) {
-  bot.reply(message, message_help)
+  bot.reply(message, messageHelp)
 })
