@@ -1,12 +1,10 @@
 {
   "development": {
     "DEBUG": true,
-    "CHANNEL": "#test-bot",
-    "CHANNEL_TYPE": "channels"
+    "CHANNEL": "#test-bot"
   },
   "production": {
     "DEBUG": false,
-    "CHANNEL": "#leo",
-    "CHANNEL_TYPE": "channels"
+    "CHANNEL": "#leo"
   }
 }
