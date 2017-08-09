@@ -43,6 +43,17 @@ npm run start
 
 Just ask `help` to `@leo-bot`.
 
+## Deploy
+
+### Heroku
+
+```bash
+heroku create --buildpack https://github.com/heroku/heroku-buildpack-nodejs.git
+heroku config:set SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX
+heroku config:set TZ=Europe/Paris
+heroku ps:scale web=0 worker=1
+```
+
 ## Development
 
 This project uses ESLint for its syntax. You should read [some documentation before](http://eslint.org/docs/rules/).
