@@ -33,7 +33,7 @@ The bot daily message is sent to:
 npm run dev
 
 # Run ESLint to check if code respects it's syntax.
-npm run eslint
+npm run lint
 
 # Start server in production environment.
 npm run start
