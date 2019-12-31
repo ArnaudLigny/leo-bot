@@ -25,7 +25,7 @@ let controller = Botkit.slackbot({
   debug: config['DEBUG']
 })
 
-var bot = controller.spawn({
+let bot = controller.spawn({
   token: token
 }).startRTM(function (err, bot, payload) {
   if (err) {
@@ -35,10 +35,12 @@ var bot = controller.spawn({
   }
 })
 
+let redis = require('redis').createClient(process.env.REDIS_URL)
+
 /**
  * Sends a message
  */
-var reminder = function () {
+let reminder = function () {
   bot.api.chat.postMessage({
     'token': token,
     'channel': config['CHANNEL'],
@@ -50,7 +52,26 @@ var reminder = function () {
 /**
  * Job schedule
  */
-var job = schedule.scheduleJob(config['SCHEDULE'], reminder)
+// DEBUG
+console.log(require('node-schedule').scheduledJobs)
+
+let job = schedule.scheduleJob(config['SCHEDULE'], reminder)
+
+redis.get('job', function (error, result) {
+  if (error) {
+    console.log(error)
+    throw error
+  }
+  if (config['DEBUG']) {
+    console.log('debug: REDIS `job` = `' + result + '`')
+  }
+  if (result === 'off') {
+    job.cancel()
+  }
+})
+
+// DEBUG
+console.log(require('node-schedule').scheduledJobs)
 
 /**
  * Explain the user how to use the bot
@@ -59,7 +80,7 @@ controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', func
   bot.reply(message, messageHelp)
 })
 
-var utterances = {
+let utterances = {
   yes: new RegExp(/^(oui|ouais|yes|yea|yup|yep|ya|sure|ok|y|yeah|yah)/i),
   no: new RegExp(/^(non|nop|nan|no|nah|nope|n)/i)
 }
@@ -76,6 +97,7 @@ controller.hears(['annule', 'cancel'], 'direct_message,direct_mention,mention', 
           pattern: utterances.yes,
           callback: function (response, convo) {
             job.cancel()
+            redis.set('job', 'off', redis.print)
             convo.say(messageReminderCancelConfirm)
             convo.next()
             // message on channel
@@ -108,6 +130,7 @@ controller.hears(['rappel', 'reminder'], 'direct_message,direct_mention,mention'
     if (!err) {
       job.cancel()
       job = schedule.scheduleJob(config['SCHEDULE'], reminder)
+      redis.set('job', 'on', redis.print)
       convo.say(messageReminderStartConfirm)
       convo.next()
     }
