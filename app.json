@@ -18,7 +18,7 @@
   ],
   "env": {
     "SLACK_BOT_TOKEN": {
-      "description": "You'll find SLACK_BOT_TOKEN at https://my.slack.com/apps/A0F7YS25R-bots.",
+      "description": "You'll find it at https://my.slack.com/apps/A0F7YS25R-bots.",
       "value": "",
       "required": true
     },
