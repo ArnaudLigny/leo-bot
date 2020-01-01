@@ -6,6 +6,8 @@
 
 ## Installation
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
+
 ```bash
 git clone https://github.com/Narno/leo-bot.git && cd leo-bot
 npm install
@@ -53,7 +55,7 @@ Just ask `help` to `@leo-bot`.
 
 ## Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
+### Heroku (CLI)
 
 ```bash
 heroku create --buildpack https://github.com/heroku/heroku-buildpack-nodejs.git
