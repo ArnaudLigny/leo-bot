@@ -6,12 +6,12 @@
 
 ## Installation
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
-
 ```bash
 git clone https://github.com/Narno/leo-bot.git && cd leo-bot
 npm install
 ```
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
 
 ### Slack
 #### Token
