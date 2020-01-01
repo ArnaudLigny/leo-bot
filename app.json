@@ -21,6 +21,10 @@
       "description": "You'll find SLACK_BOT_TOKEN at my.slack.com/apps/A0F7YS25R-bots.",
       "value": "xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX",
       "required": true
+    },
+    "TZ": {
+      "description": "Time Zone.",
+      "value": "Europe/Paris"
     }
   },
   "formation": {
