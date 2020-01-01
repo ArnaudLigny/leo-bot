@@ -7,6 +7,7 @@
 ## Installation
 
 ```bash
+git clone https://github.com/Narno/leo-bot.git
 npm install
 ```
 
@@ -56,10 +57,10 @@ heroku ps:scale web=0 worker=1
 
 ## Development
 
-This project uses ESLint for its syntax. You should read [some documentation before](http://eslint.org/docs/rules/).
+This project uses ESLint for its syntax. You should read [some documentation before](https://eslint.org/docs/rules/).
 
 ## License
 
-_leo-bot_ is a free software distributed under the terms of the [MIT license](http://opensource.org/licenses/MIT).
+_leo-bot_ is a free software distributed under the terms of the [MIT license](https://opensource.org/licenses/MIT).
 
 Copyright (c) Arnaud Ligny
