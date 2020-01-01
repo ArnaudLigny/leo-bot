@@ -1,0 +1,40 @@
+{
+  "name": "leo-bot",
+  "description": "A very simple bot based on Botkit to notice you when it's time to pick up your child at school!",
+  "repository": "https://github.com/Narno/leo-bot",
+  "logo": "https://a.slack-edge.com/80588/img/services/bots_128.png",
+  "keywords": ["bot", "slack", "botkit"],
+  "website": "https://narno.org/leo-bot/",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-redis:hobby-dev",
+      "as": "REDIS"
+    }
+  ],
+  "env": {
+    "SLACK_BOT_TOKEN": {
+      "description": "You'll find it at https://my.slack.com/apps/A0F7YS25R-bots.",
+      "value": "",
+      "required": true
+    },
+    "TZ": {
+      "description": "Time Zone.",
+      "value": "Europe/Paris",
+      "required": false
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    },
+    "web": {
+      "quantity": 0
+    }
+  }
+}
