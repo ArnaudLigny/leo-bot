@@ -13,7 +13,7 @@ npm install
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
 
-> Note: redis is required.
+> Note: [Redis](https://redis.io) is required.
 
 ## Configuration
 
