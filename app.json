@@ -17,6 +17,16 @@
     }
   ],
   "env": {
+    "CHANNEL": {
+      "description": "Slack channel.",
+      "value": "#leo",
+      "required": true
+    },
+    "SCHEDULE": {
+      "description": "The cron-style scheduling format.",
+      "value": "0 45 17 * * 1-5",
+      "required": true
+    },
     "SLACK_BOT_TOKEN": {
       "description": "You'll find it at https://my.slack.com/apps/A0F7YS25R-bots.",
       "value": "",
