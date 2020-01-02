@@ -13,30 +13,30 @@ npm install
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
 
-### Slack
-#### Token
+## Configuration
 
-You need to set an environment variable:
+You need to set environment variables. See `.env.dist`.
+
 ```bash
-export SLACK_BOT_TOKEN="xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX"
+export CHANNEL='#leo'
+export SCHEDULE='0 45 17 * * 1-5'
+export SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+The cron-style scheduling format consists of:
+```
+*    *    *    *    *    *
+┬    ┬    ┬    ┬    ┬    ┬
+│    │    │    │    │    |
+│    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)
+│    │    │    │    └───── month (1 - 12)
+│    │    │    └────────── day of month (1 - 31)
+│    │    └─────────────── hour (0 - 23)
+│    └──────────────────── minute (0 - 59)
+└───────────────────────── second (0 - 59, OPTIONAL)
+```
+
 > You'll find `SLACK_BOT_TOKEN` at https://my.slack.com/apps/A0F7YS25R-bots.
-
-#### Channel
-
-The bot daily message is sent to:
-- `#test-bot` channel on **debug** mode
-- `#leo` channel on **production** mode
-
-See `config.json`.
-
-### Reminder
-
-The bot daily message is scheduled at:
-- `*/15 * * * * *` on **debug** mode: every 15 seconds
-- `0 45 17 * * 1-5` on **production** mode: every opendays at 5:45pm
-
-See `config.json`.
 
 ## Usage
 
@@ -49,7 +49,7 @@ npm run lint
 npm run start
 ```
 
-### Supported commands
+### Supported Slack commands
 
 Just ask `help` to `@leo-bot`.
 
@@ -60,6 +60,8 @@ Just ask `help` to `@leo-bot`.
 ```bash
 heroku create --buildpack https://github.com/heroku/heroku-buildpack-nodejs.git
 heroku addons:create heroku-redis:hobby-dev
+heroku config:set CHANNEL='#leo'
+heroku config:set SCHEDULE='0 45 17 * * 1-5'
 heroku config:set SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX
 heroku config:set TZ=Europe/Paris
 heroku ps:scale web=0 worker=1

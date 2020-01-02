@@ -3,9 +3,16 @@
  * @author Arnaud Ligny <arnaud@ligny.org>
  */
 
-const config = require('../config.json')[process.env.NODE_ENV || 'development']
-const schedule = require('node-schedule')
+const Schedule = require('node-schedule')
+const Redis = require('redis').createClient(process.env.REDIS_URL)
+const Botkit = require('botkit')
+
+const debug = process.env.NODE_ENV !== 'production'
 const token = process.env.SLACK_BOT_TOKEN
+const channel = process.env.CHANNEL
+const schedule = process.env.SCHEDULE
+
+// messages
 const messageReminder = 'Attention <!channel>, il est temps de s\'organiser pour récupérer Léo !'
 const messageHelp = 'Hello, je ne sers que de rappel journalier ! :kissing_heart:\n' +
 '- `annule` pour annuler les rappels\n' +
@@ -15,16 +22,13 @@ const messageReminderCancelConfirm = 'Les rappels ont été annulés :no_bell:'
 const messageReminderStartConfirm = 'Rappels programmés :bell:'
 
 if (!token) {
-  console.log('Error: Specify token in environment')
+  console.log('Error: Slack token is not defined in environment')
   process.exit(1)
 }
 
-const Botkit = require('botkit')
-
 const controller = Botkit.slackbot({
-  debug: config.DEBUG
+  debug: debug
 })
-
 const bot = controller.spawn({
   token: token
 }).startRTM(function (err, bot, payload) {
@@ -35,15 +39,13 @@ const bot = controller.spawn({
   }
 })
 
-const redis = require('redis').createClient(process.env.REDIS_URL)
-
 /**
- * Sends a message
+ * Reminder message
  */
 const reminder = function () {
   bot.api.chat.postMessage({
     token: token,
-    channel: config.CHANNEL,
+    channel: channel,
     text: messageReminder,
     as_user: true
   })
@@ -52,14 +54,14 @@ const reminder = function () {
 /**
  * Job schedule
  */
-let job = schedule.scheduleJob(config.SCHEDULE, reminder)
+let job = Schedule.scheduleJob(schedule, reminder)
 
-redis.get('job', function (error, result) {
+Redis.get('job', function (error, result) {
   if (error) {
     console.log(error)
     throw error
   }
-  if (config.DEBUG) {
+  if (debug) {
     console.log('debug: REDIS `job` = `' + result + '`')
   }
   if (result === 'off') {
@@ -68,7 +70,7 @@ redis.get('job', function (error, result) {
 })
 
 /**
- * Explain the user how to use the bot
+ * Explain how to use the bot
  */
 controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', function (bot, message) {
   bot.reply(message, messageHelp)
@@ -83,7 +85,6 @@ const utterances = {
  * Cancel the next planned invocations
  */
 controller.hears(['annule', 'cancel'], 'direct_message,direct_mention,mention', function (bot, message) {
-  // bot.reply(message, messageReminderCancel)
   bot.startConversation(message, function (err, convo) {
     if (!err) {
       convo.ask(messageReminderCancelAsk, [
@@ -91,13 +92,13 @@ controller.hears(['annule', 'cancel'], 'direct_message,direct_mention,mention', 
           pattern: utterances.yes,
           callback: function (response, convo) {
             job.cancel()
-            redis.set('job', 'off', redis.print)
+            Redis.set('job', 'off', Redis.print)
             convo.say(messageReminderCancelConfirm)
             convo.next()
             // message on channel
             bot.api.chat.postMessage({
               token: token,
-              channel: config.CHANNEL,
+              channel: channel,
               text: messageReminderCancelConfirm,
               as_user: true
             })
@@ -123,8 +124,8 @@ controller.hears(['rappel', 'reminder'], 'direct_message,direct_mention,mention'
   bot.startConversation(message, function (err, convo) {
     if (!err) {
       job.cancel()
-      job = schedule.scheduleJob(config.SCHEDULE, reminder)
-      redis.set('job', 'on', redis.print)
+      job = Schedule.scheduleJob(schedule, reminder)
+      Redis.set('job', 'on', Redis.print)
       convo.say(messageReminderStartConfirm)
       convo.next()
     }
