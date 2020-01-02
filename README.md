@@ -17,7 +17,7 @@ npm install
 
 ## Configuration
 
-You need to set environment variables. See [`.env.dist`](.env.dist).
+You need to set environment variables. See [`.env.dist`](https://github.com/Narno/leo-bot/blob/master/.env.dist).
 
 The cron-style scheduling format consists of:
 ```
