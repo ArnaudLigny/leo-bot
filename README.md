@@ -13,15 +13,11 @@ npm install
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
 
+> Note: redis is required.
+
 ## Configuration
 
-You need to set environment variables. See `.env.dist`.
-
-```bash
-export CHANNEL='#leo'
-export SCHEDULE='0 45 17 * * 1-5'
-export SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX
-```
+You need to set environment variables. See [`.env.dist`](.env.dist).
 
 The cron-style scheduling format consists of:
 ```
