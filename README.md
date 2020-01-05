@@ -13,11 +13,16 @@ npm install
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
 
-> Note: [Redis](https://redis.io) is required.
+> [Node.js](https://nodejs.org) and [Redis](https://redis.io) are required.
 
 ## Configuration
 
-You need to set environment variables. See [`.env.dist`](https://github.com/Narno/leo-bot/blob/master/.env.dist).
+You need to set environment variables (See [`.env.dist`](https://github.com/Narno/leo-bot/blob/master/.env.dist)):
+- `CHANNEL`: Slack channel (ie: `#leo`)
+- `SCHEDULE`: Cron schedule (ie: `0 45 17 * * 1-5`)
+- `SLACK_BOT_TOKEN`: Slack token (create one at https://my.slack.com/apps/A0F7YS25R-bots)
+- `REDIS_URL`: URL to the Redis server (ie: `redis://:secrets@example.com:1234`)
+- `TZ`: Time Zone (ie: `Europe/Paris`)
 
 The cron-style scheduling format consists of:
 ```
@@ -32,15 +37,12 @@ The cron-style scheduling format consists of:
 └───────────────────────── second (0 - 59, OPTIONAL)
 ```
 
-> You'll find `SLACK_BOT_TOKEN` at https://my.slack.com/apps/A0F7YS25R-bots.
-
 ## Usage
 
 ```bash
 # Served with hot reload (+ ESLint verification).
 npm run dev
-# Run ESLint to check if code respects it's syntax.
-npm run lint
+
 # Start server in production environment.
 npm run start
 ```
@@ -66,6 +68,11 @@ heroku ps:scale web=0 worker=1
 ## Development
 
 This project uses ESLint for its syntax. You should read [some documentation before](https://eslint.org/docs/rules/).
+
+```bash
+# Run ESLint to check if code respects it's syntax.
+npm run lint
+```
 
 ## License
 
