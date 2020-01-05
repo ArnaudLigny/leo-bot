@@ -20,7 +20,7 @@ npm install
 You need to set environment variables (See [`.env.dist`](https://github.com/Narno/leo-bot/blob/master/.env.dist)):
 - `CHANNEL`: Slack channel (ie: `#leo`)
 - `SCHEDULE`: Cron schedule (ie: `0 45 17 * * 1-5`)
-- `SLACK_BOT_TOKEN`: Slack token (create one at https://my.slack.com/apps/A0F7YS25R-bots)
+- `SLACK_BOT_TOKEN`: Slack token (create one at [my.slack.com/apps/A0F7YS25R-bots](https://my.slack.com/apps/A0F7YS25R-bots))
 - `REDIS_URL`: URL to the Redis server (ie: `redis://:secrets@example.com:1234`)
 - `TZ`: Time Zone (ie: `Europe/Paris`)
 
