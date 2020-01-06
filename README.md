@@ -61,6 +61,7 @@ Just ask `help` to `@leo-bot`.
 ```bash
 heroku create --buildpack https://github.com/heroku/heroku-buildpack-nodejs.git
 heroku addons:create heroku-redis:hobby-dev
+heroku config:set CHILD='Léo'
 heroku config:set CHANNEL='#leo'
 heroku config:set SCHEDULE='0 45 17 * * 1-5'
 heroku config:set SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX
