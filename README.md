@@ -18,6 +18,8 @@ npm install
 ## Configuration
 
 You need to set environment variables (See [`.env.dist`](https://github.com/Narno/leo-bot/blob/master/.env.dist)):
+
+- `CHILD`: Child firstname (ie: `Léo`)
 - `CHANNEL`: Slack channel (ie: `#leo`)
 - `SCHEDULE`: Cron schedule (ie: `0 45 17 * * 1-5`)
 - `SLACK_BOT_TOKEN`: Slack token (create one at [my.slack.com/apps/A0F7YS25R-bots](https://my.slack.com/apps/A0F7YS25R-bots))
@@ -25,7 +27,8 @@ You need to set environment variables (See [`.env.dist`](https://github.com/Narn
 - `TZ`: Time Zone (ie: `Europe/Paris`)
 
 The cron-style scheduling format consists of:
-```
+
+```text
 *    *    *    *    *    *
 ┬    ┬    ┬    ┬    ┬    ┬
 │    │    │    │    │    |
@@ -58,6 +61,7 @@ Just ask `help` to `@leo-bot`.
 ```bash
 heroku create --buildpack https://github.com/heroku/heroku-buildpack-nodejs.git
 heroku addons:create heroku-redis:hobby-dev
+heroku config:set CHILD='Léo'
 heroku config:set CHANNEL='#leo'
 heroku config:set SCHEDULE='0 45 17 * * 1-5'
 heroku config:set SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX

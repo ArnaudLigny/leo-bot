@@ -17,6 +17,11 @@
     }
   ],
   "env": {
+    "CHILD": {
+      "description": "Child firstname.",
+      "value": "Léo",
+      "required": true
+    },
     "CHANNEL": {
       "description": "Slack channel.",
       "value": "#leo",
