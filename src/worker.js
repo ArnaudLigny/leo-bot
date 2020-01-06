@@ -3,23 +3,19 @@
  * @author Arnaud Ligny <arnaud@ligny.org>
  */
 
+const Botkit = require('botkit')
 const Schedule = require('node-schedule')
 const Redis = require('redis').createClient(process.env.REDIS_URL)
-const Botkit = require('botkit')
+const i18n = require('i18n')
+const path = require('path')
 
 const debug = process.env.NODE_ENV !== 'production'
+const child = process.env.CHILD || 'Léo'
 const token = process.env.SLACK_BOT_TOKEN
-const channel = process.env.CHANNEL
-const schedule = process.env.SCHEDULE
+const channel = process.env.CHANNEL || path.join('#', child)
+const schedule = process.env.SCHEDULE || '0 45 17 * * 1-5'
 
-// messages
-const messageReminder = 'Attention <!channel>, il est temps de s\'organiser pour récupérer Léo !'
-const messageHelp = 'Hello, je ne sers que de rappel journalier ! :kissing_heart:\n' +
-'- `annule` pour annuler les rappels\n' +
-'- `rappel` pour reprogrammer les rappels'
-const messageReminderCancelAsk = 'Voulez-vous annuler les prochains rappels :alarm_clock: ?'
-const messageReminderCancelConfirm = 'Les rappels ont été annulés :no_bell:'
-const messageReminderStartConfirm = 'Rappels programmés :bell:'
+i18n.configure({ directory: path.join(__dirname, '../locales') })
 
 if (!token) {
   console.log('Error: Slack token is not defined in environment')
@@ -46,7 +42,7 @@ const reminder = function () {
   bot.api.chat.postMessage({
     token: token,
     channel: channel,
-    text: messageReminder,
+    text: i18n.__("Attention <!channel>, il est temps de s'organiser pour récupérer %s !", child),
     as_user: true
   })
 }
@@ -73,7 +69,7 @@ Redis.get('job', function (error, result) {
  * Explain how to use the bot
  */
 controller.hears(['aide', 'help'], 'direct_message,direct_mention,mention', function (bot, message) {
-  bot.reply(message, messageHelp)
+  bot.reply(message, i18n.__('Hello, je ne sers que de rappel journalier ! :kissing_heart:\n- `annule` pour annuler les rappels\n- `rappel` pour reprogrammer les rappels'))
 })
 
 const utterances = {
@@ -87,19 +83,19 @@ const utterances = {
 controller.hears(['annule', 'cancel'], 'direct_message,direct_mention,mention', function (bot, message) {
   bot.startConversation(message, function (err, convo) {
     if (!err) {
-      convo.ask(messageReminderCancelAsk, [
+      convo.ask(i18n.__('Voulez-vous annuler les prochains rappels :alarm_clock: ?'), [
         {
           pattern: utterances.yes,
           callback: function (response, convo) {
             job.cancel()
             Redis.set('job', 'off', Redis.print)
-            convo.say(messageReminderCancelConfirm)
+            convo.say(i18n.__('Les rappels ont été annulés :no_bell:'))
             convo.next()
             // message on channel
             bot.api.chat.postMessage({
               token: token,
               channel: channel,
-              text: messageReminderCancelConfirm,
+              text: i18n.__('Les rappels ont été annulés :no_bell:'),
               as_user: true
             })
           }
@@ -126,7 +122,7 @@ controller.hears(['rappel', 'reminder'], 'direct_message,direct_mention,mention'
       job.cancel()
       job = Schedule.scheduleJob(schedule, reminder)
       Redis.set('job', 'on', Redis.print)
-      convo.say(messageReminderStartConfirm)
+      convo.say(i18n.__('Rappels programmés :bell:'))
       convo.next()
     }
   })
