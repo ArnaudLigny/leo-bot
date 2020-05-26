@@ -1,4 +1,5 @@
 title: leo-bot
+description: "A very simple bot based on Botkit to notice you when it's time to pick up your child at school!"
 content:
   dir: .
 static:
