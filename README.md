@@ -2,7 +2,7 @@
 
 > A very simple bot based on [Botkit](https://github.com/howdyai/botkit) to notice you when it's time to pick up your child at school!
 
-![Screen capture of the Slack bot](/docs/leo-bot-slack-example.png)
+![Screen capture of the Slack bot](docs/leo-bot-slack-example.png)
 
 ## Installation
 
