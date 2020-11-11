@@ -4,7 +4,7 @@
   "repository": "https://github.com/Narno/leo-bot",
   "logo": "https://a.slack-edge.com/80588/img/services/bots_128.png",
   "keywords": ["bot", "slack", "botkit"],
-  "website": "https://narno.org/leo-bot/",
+  "website": "https://narno.dev/leo-bot/",
   "buildpacks": [
     {
       "url": "heroku/nodejs"
