@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy docs to GitHub Pages
 on:
   push:
     branches:
@@ -7,39 +7,19 @@ env:
   CECIL_BASEURL: '/'
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout source
       uses: actions/checkout@v2
       with:
         fetch-depth: 1
-
     - name: Build site
       uses: Cecilapp/Cecil-Action@v3
       with:
         config: 'cecil.yml'
-
-    - name: Upload site to Artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: _site
-        path: _site
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Download site from Artifacts
-      uses: actions/download-artifact@v1
-      with:
-        name: _site
-
-    - name: Deploy site to GitHub Pages
+    - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
       with:
         email: arnaud@ligny.org
