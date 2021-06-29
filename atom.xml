@@ -5,7 +5,7 @@
   <subtitle><![CDATA[A very simple bot based on Botkit to notice you when it's time to pick up your child at school!]]></subtitle>
   <link href="/atom.xml" rel="self" type="application/atom+xml" />
   <link href="/" rel="alternate" type="text/html" />
-  <updated>2021-06-29T16:44:56+02:00</updated>
+  <updated>2021-06-29T16:50:03+02:00</updated>
   <author>
     <name>leo-bot</name>
     <uri>/</uri>
