@@ -3,7 +3,3 @@ _site
 themes
 vendor
 node_modules
-.cecil
-_site
-themes
-vendor
