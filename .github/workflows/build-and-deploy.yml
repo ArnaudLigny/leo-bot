@@ -5,11 +5,8 @@ on:
       - master
       - test
 env:
-  CONFIG: 'cecil.yml'
   CECIL_BASEURL: '/'
-  EMAIL: arnaud@ligny.org
-  GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-  BUILD_DIR: _site
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build:
     name: Build
@@ -23,20 +20,27 @@ jobs:
 
     - name: Build site with Cecil
       uses: Cecilapp/Cecil-Action@composite
+      with:
+        config: 'cecil.yml'
 
     - name: Upload site to Artifacts
       uses: actions/upload-artifact@v1
       with:
         name: _site
         path: _site
+
   deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
+
     steps:
     - name: Download site from Artifacts
       uses: actions/download-artifact@v1
       with:
         name: _site
+
     - name: Deploy site to GitHub Pages
-      uses: Cecilapp/GitHub-Pages-deploy@2.0.1
+      uses: Cecilapp/GitHub-Pages-deploy@3
+      with:
+        email: arnaud@ligny.org
