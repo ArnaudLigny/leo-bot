@@ -41,6 +41,6 @@ jobs:
         name: _site
 
     - name: Deploy site to GitHub Pages
-      uses: Cecilapp/GitHub-Pages-deploy@3
+      uses: Cecilapp/GitHub-Pages-deploy@v3
       with:
         email: arnaud@ligny.org
