@@ -4,7 +4,6 @@ on:
     branches:
       - master
 env:
-  CECIL_BASEURL: '/'
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   build-and-deploy:
