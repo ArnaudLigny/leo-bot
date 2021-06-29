@@ -22,6 +22,7 @@ jobs:
       uses: Cecilapp/Cecil-Action@composite
       with:
         config: 'cecil.yml'
+        version: '5.55.0'
 
     - name: Upload site to Artifacts
       uses: actions/upload-artifact@v1
