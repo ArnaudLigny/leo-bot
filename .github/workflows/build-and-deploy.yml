@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - test
 env:
   CONFIG: 'cecil.yml'
   CECIL_BASEURL: '/'
