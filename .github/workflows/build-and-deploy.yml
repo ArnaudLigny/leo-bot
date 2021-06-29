@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - test
 env:
   CECIL_BASEURL: '/'
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -19,7 +18,7 @@ jobs:
         fetch-depth: 1
 
     - name: Build site
-      uses: Cecilapp/Cecil-Action@composite
+      uses: Cecilapp/Cecil-Action@v3
       with:
         config: 'cecil.yml'
 
