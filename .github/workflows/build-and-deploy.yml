@@ -18,7 +18,7 @@ jobs:
       with:
         fetch-depth: 1
 
-    - name: Build site with Cecil
+    - name: Build site
       uses: Cecilapp/Cecil-Action@composite
       with:
         config: 'cecil.yml'
