@@ -78,8 +78,12 @@ This project uses ESLint for its syntax. You should read [some documentation bef
 npm run lint
 ```
 
+## Source
+
+https://github.com/Narno/leo-bot
+
 ## License
 
 _leo-bot_ is a free software distributed under the terms of the [MIT license](https://opensource.org/licenses/MIT).
 
-Copyright (c) Arnaud Ligny
+© [Arnaud Ligny](https://arnaudligny.fr)
