@@ -80,7 +80,7 @@ npm run lint
 
 ## Source
 
-https://github.com/Narno/leo-bot
+<https://github.com/Narno/leo-bot>
 
 ## License
 
