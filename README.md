@@ -11,13 +11,13 @@ git clone https://github.com/Narno/leo-bot.git && cd leo-bot
 npm install
 ```
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Narno/leo-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ArnaudLigny/leo-bot)
 
 > [Node.js](https://nodejs.org) and [Redis](https://redis.io) are required.
 
 ## Configuration
 
-You need to set environment variables (See [`.env.dist`](https://github.com/Narno/leo-bot/blob/master/.env.dist)):
+You need to set environment variables (See [`.env.dist`](https://github.com/ArnaudLigny/leo-bot/blob/master/.env.dist)):
 
 - `CHILD`: Child firstname (ie: `Léo`)
 - `CHANNEL`: Slack channel (ie: `#leo`)
@@ -80,7 +80,7 @@ npm run lint
 
 ## Source
 
-<https://github.com/Narno/leo-bot>
+<https://github.com/ArnaudLigny/leo-bot>
 
 ## License
 
