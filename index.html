@@ -26,17 +26,16 @@
     <header>
       <h1>leo-bot</h1>
     </header>
-    <main>      <h1 id="">leo-bot</h1>
-<p><em>leo-bot</em> is a very simple bot based on <a href="https://github.com/howdyai/botkit">Botkit</a> to notice you when it's time to pick up your child at school!</p>
+    <main>      <p><em>leo-bot</em> is a very simple bot based on <a href="https://github.com/howdyai/botkit">Botkit</a> to notice you when it's time to pick up your child at school!</p>
 <p><img src="docs/leo-bot-slack-example.0281648d7f1280d777c9b59dacaef220.png" alt="Screen capture of the Slack bot" loading="lazy" width="952" height="94" /></p>
-<h2 id="-1">Installation</h2>
+<h2 id="">Installation</h2>
 <pre><code class="language-bash">git clone https://github.com/Narno/leo-bot.git &amp;&amp; cd leo-bot
 npm install</code></pre>
 <p><a href="https://heroku.com/deploy?template=https://github.com/ArnaudLigny/leo-bot"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy" /></a></p>
 <blockquote>
 <p><a href="https://nodejs.org">Node.js</a> and <a href="https://redis.io">Redis</a> are required.</p>
 </blockquote>
-<h2 id="-2">Configuration</h2>
+<h2 id="-1">Configuration</h2>
 <p>You need to set environment variables (See <a href="https://github.com/ArnaudLigny/leo-bot/blob/master/.env.dist"><code>.env.dist</code></a>):</p>
 <ul>
 <li><code>CHILD</code>: Child firstname (ie: <code>Léo</code>)</li>
@@ -56,16 +55,16 @@ npm install</code></pre>
 │    │    └─────────────── hour (0 - 23)
 │    └──────────────────── minute (0 - 59)
 └───────────────────────── second (0 - 59, OPTIONAL)</code></pre>
-<h2 id="-3">Usage</h2>
+<h2 id="-2">Usage</h2>
 <pre><code class="language-bash"># Served with hot reload (+ ESLint verification).
 npm run dev
 
 # Start server in production environment.
 npm run start</code></pre>
-<h3 id="-4">Supported Slack commands</h3>
+<h3 id="-3">Supported Slack commands</h3>
 <p>Just ask <code>help</code> to <code>@leo-bot</code>.</p>
-<h2 id="-5">Deploy</h2>
-<h3 id="-6">Heroku (CLI)</h3>
+<h2 id="-4">Deploy</h2>
+<h3 id="-5">Heroku (CLI)</h3>
 <pre><code class="language-bash">heroku create --buildpack https://github.com/heroku/heroku-buildpack-nodejs.git
 heroku addons:create heroku-redis:hobby-dev
 heroku config:set CHILD='Léo'
@@ -74,13 +73,13 @@ heroku config:set SCHEDULE='0 45 17 * * 1-5'
 heroku config:set SLACK_BOT_TOKEN=xoxb-XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX
 heroku config:set TZ=Europe/Paris
 heroku ps:scale web=0 worker=1</code></pre>
-<h2 id="-7">Development</h2>
+<h2 id="-6">Development</h2>
 <p>This project uses ESLint for its syntax. You should read <a href="https://eslint.org/docs/rules/">some documentation before</a>.</p>
 <pre><code class="language-bash"># Run ESLint to check if code respects it's syntax.
 npm run lint</code></pre>
-<h2 id="-8">Source</h2>
+<h2 id="-7">Source</h2>
 <p><a href="https://github.com/ArnaudLigny/leo-bot">https://github.com/ArnaudLigny/leo-bot</a></p>
-<h2 id="-9">License</h2>
+<h2 id="-8">License</h2>
 <p><em>leo-bot</em> is a free software distributed under the terms of the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
 <p>© <a href="https://arnaudligny.fr">Arnaud Ligny</a></p>
 
