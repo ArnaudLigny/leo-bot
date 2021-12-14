@@ -5,7 +5,6 @@ _leo-bot_ is a very simple bot based on [Botkit](https://github.com/howdyai/botk
 ## Installation
 
 ```bash
-git clone https://github.com/Narno/leo-bot.git && cd leo-bot
 npm install
 ```
 
