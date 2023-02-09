@@ -8,7 +8,7 @@ _leo-bot_ is a very simple bot based on [Botkit](https://github.com/howdyai/botk
 npm install
 ```
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ArnaudLigny/leo-bot)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ArnaudLigny/leo-bot)
 
 > [Node.js](https://nodejs.org) and [Redis](https://redis.io) are required.
 
